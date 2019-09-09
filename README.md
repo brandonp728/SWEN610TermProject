@@ -13,6 +13,7 @@ Informal Brainstorming Metting
 Date: 9/1
 Time: 12:15
 Medium: Discord
+     Medium Reason: Everyone had it
 Reason: To record skills and to pitch ideas
 Ideas Suggested:
 	Josh: Pokemon API to GET and SET pokemon data 
@@ -52,3 +53,12 @@ Discussion:
 	Went with Pokemon API and interface 
 		Use case: TBD 
 		DATA Collection: TBD
+
+Method of data repository: github 
+Reason: we were all familiar with it
+
+
+
+9/9/2019
+Created Trello account to keep tasks in line
+Added everyone to it
