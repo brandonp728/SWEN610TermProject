@@ -8,9 +8,9 @@ Meeting Notes <br>
 
 Informal Brainstorming Meeting: <br>
 
-	Date: 9/1 <br>
-	Time: 12:15 <br>
-	Medium: Discord <br>
+	Date: 9/1
+	Time: 12:15
+	Medium: Discord
      	Medium Reason: Everyone had it
 	Reason: To record skills and to pitch ideas
 	Ideas Suggested:
