@@ -11,13 +11,13 @@ Informal Brainstorming Meeting: <br>
 	Date: 9/1
 	Time: 12:15
 	Medium: Discord
-     	Medium Reason: Everyone had it
+	Medium Reason: Everyone had it
 	Reason: To record skills and to pitch ideas
 	Ideas Suggested:
-	Josh: Pokemon API to GET and SET pokemon data 
-	Brian: Flashdrive mobile database
-	Pierce: Laudry moinitoring system
-<br><br><br>
+		Josh - Pokemon API to GET and SET pokemon data 
+		Brian - Flashdrive mobile database
+		Pierce - Laudry moinitoring system
+<br><br>
 Skills:
 
 	Brian Kelly:
