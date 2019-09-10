@@ -1,64 +1,66 @@
 # SWEN610TermProject
 
 
-----General Information-----
-Group Leader: Brian
-GitHub Mgner: Brandon
+----General Information----- <br>
+Team Lead: Brian </br>
+Github Repo Manager: Brandon <br>
+Meeting Notes <br>
 
+Informal Brainstorming Meeting: <br>
 
-
-Meeting Notes
-
-Informal Brainstorming Metting 
-Date: 9/1
-Time: 12:15
-Medium: Discord
-     Medium Reason: Everyone had it
-Reason: To record skills and to pitch ideas
-Ideas Suggested:
+	Date: 9/1 <br>
+	Time: 12:15 <br>
+	Medium: Discord <br>
+     	Medium Reason: Everyone had it
+	Reason: To record skills and to pitch ideas
+	Ideas Suggested:
 	Josh: Pokemon API to GET and SET pokemon data 
 	Brian: Flashdrive mobile database
 	Pierce: Laudry moinitoring system
+<br><br><br>
 Skills:
+
 	Brian Kelly:
 		Hard
-		- 1 year professonial VR/AR/MR app development in c#
-		- 2 years of full stack development using php, css, html, js, cold fusion
-			CMS - Cascade, Wordpress
-			Hosting - Bluehost, GoDaddy, HostGator
-		- 3 years of academic and professional SQL usage
-		- 3 years of adacemic no-SQL usage ajax, xml, json
+		1 year professonial VR/AR/MR app development in c#
+		2 years of full stack development using php, css, html, js, cold fusion
+			CMS : Cascade, Wordpress
+			Hosting : Bluehost, GoDaddy, HostGator
+		3 years of academic and professional SQL usage
+		3 years of adacemic no-SQL usage ajax, xml, json
 		Soft
-		- 2 years client service
-		- 6 years acedemic/volunteering leadership roles
-	Brandon Palonis
+		2 years client service
+		6 years acedemic/volunteering leadership roles
+	Brandon Palonis:
 		Hard
-		-2 years professional experience in Javascript
-		-2 years professional experience in AngularJS
-		-1 year professional experience in Python
-		-2 years professional experience in SQL
-		-2 years professional experience in C#
-	Josh Guarino
-		- 2 years professional development experience with PHP.
-		- 2 years professional development experience with JavaScript.
-		- 4 years professional experience software testing with 2 years automation testing.
-		- 2 years professional experience with  python.
-		- 4 years working with SQL databases (MS SQL Server, MySql, postgres)
-	Pierce Sams
-		- 4 years professional development experience with PHP.
-		- 2 years professional development experience with C#.
-		- 6 years professional experience with relational databases such as MySQL, PostgreSQL and SQL Server.
+		2 years professional experience in Javascript
+		2 years professional experience in AngularJS
+		1 year professional experience in Python
+		2 years professional experience in SQL
+		2 years professional experience in C#
+	Josh Guarino:
+		2 years professional development experience with PHP.
+		2 years professional development experience with JavaScript.
+		4 years professional experience software testing with 2 years automation testing.
+		2 years professional experience with  python.
+		4 years working with SQL databases (MS SQL Server, MySql, postgres)
+	- Pierce Sams:
+		4 years professional development experience with PHP.
+		2 years professional development experience with C#.
+		6 years professional experience with relational databases such as MySQL, PostgreSQL and SQL Server.
+<br><br>
+
 Discussion:
+
 	Which project or project elements to do
 	Went with Pokemon API and interface 
 		Use case: TBD 
 		DATA Collection: TBD
+	Method of data repository: github 
+	Reason: we were all familiar with it
+<br><br>
 
-Method of data repository: github 
-Reason: we were all familiar with it
+9/9/2019:
 
-
-
-9/9/2019
-Created Trello account to keep tasks in line
-Added everyone to it
+	Created Trello account to keep tasks in line
+	Added everyone to it
