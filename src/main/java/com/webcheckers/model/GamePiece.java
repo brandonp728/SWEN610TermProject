@@ -1,8 +1,7 @@
 package com.webcheckers.model;
 
-import java.util.Date;
-
-
-public class GamePiece{
+public class GamePiece implements Move{
+    String color;
+    Boolean IsKing = false;
 
 }
