@@ -18,8 +18,8 @@ public class Game{
     }
 
     //@return time elapsed since beginning of game
-    public Date getElapsedTime(){
-        //return current time - this.timeStamp
+    public Date getElapsedTime(Date GameStartTime){
+        return LocalDateTime.now() - GameStartTime;
     }
 
     //
