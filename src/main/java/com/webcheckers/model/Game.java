@@ -1,6 +1,8 @@
 package com.webcheckers.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.time.Duration;
 
 //To Do:
 //      Gets and Sets
@@ -18,8 +20,10 @@ public class Game{
     }
 
     //@return time elapsed since beginning of game
-    public Date getElapsedTime(Date GameStartTime){
-        return LocalDateTime.now() - GameStartTime;
+    public Duration getElapsedTime(LocalDateTime GameStartTime){
+        LocalDateTime now = LocalDateTime.now();
+        
+        return Duration.between(now, GameStartTime);
     }
 
     //

@@ -13,7 +13,7 @@ public class Player {
     int tournamentsPlayed;  //Number of Tournaments played
     boolean isComputer;
 
-    public Player(boolean computer = false){
+    public Player(boolean computer){
         this.isComputer = computer;
     }
 
