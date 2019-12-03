@@ -22,7 +22,7 @@ public class Game{
     //@return time elapsed since beginning of game
     public Duration getElapsedTime(LocalDateTime GameStartTime){
         LocalDateTime now = LocalDateTime.now();
-
+            
         return Duration.between(GameStartTime, now);
     }
 

@@ -22,7 +22,7 @@
     </div>
     
     <div class="body">
-     ${gameTime} 
+     Time elapsed: ${gameTime} 
     </div>
   </div>
 
