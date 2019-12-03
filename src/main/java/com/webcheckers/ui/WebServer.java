@@ -125,6 +125,8 @@ public class WebServer {
 
     get(GAME_URL, new GameController(), templateEngine);
 
+    get("/Pieces", new GamePieceController(), templateEngine);
+
   }
 
 }
