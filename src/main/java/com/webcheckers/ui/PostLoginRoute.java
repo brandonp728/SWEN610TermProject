@@ -3,7 +3,9 @@ package com.webcheckers.ui;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.logging.Logger;
+import java.sql.*;
 
 import spark.ModelAndView;
 import spark.Request;
@@ -42,6 +44,7 @@ public class PostLoginRoute implements TemplateViewRoute {
     String password = request.queryParams("password");
     if(isValidUsername(username) && isValidPassword(password)) {
         // Query the username
+        Boolean isConnected = connectToDatabase();
         // If they exist, log them in
         // If not, display error
     }
@@ -50,5 +53,20 @@ public class PostLoginRoute implements TemplateViewRoute {
     }
     vm.put("error", error);
     return new ModelAndView(vm, "login.ftl");
+  }
+  private boolean connectToDatabase(){
+    try {
+        String connectionString = "jdbc:postgresql://localhost:5432/webcheckers";
+        String psqlUser = "postgres";
+        String psqlPass = "maxwell1";
+        String.format(connectionString, psqlUser, psqlPass);
+        Connection conn = DriverManager.getConnection(connectionString, psqlUser, psqlPass);
+        System.out.println("Connected to the db!");
+        return true;
+    } catch(Exception e) {
+        e.printStackTrace();
+        System.out.println("Uh oh sisters!");
+    }
+    return false;
   }
 }
