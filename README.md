@@ -57,6 +57,16 @@ Run the creation script with the command (This runs the file on the sam2020 data
 3) Run this command:
   > mvn install:install:file -Dfile=postgresql-42.2.8.jar -DgroupId=com.webcheckers -DartifactId=postgresql -Dversion=42.2.8 -Dpackaging=jar
 
+4) Add this to pom.xml in the dependency tag
+```xml
+     <dependency>
+        <groupId>com.webcheckers</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.2.8</version>
+     </dependency>
+```
+
+
 
 ## License
 MIT License
