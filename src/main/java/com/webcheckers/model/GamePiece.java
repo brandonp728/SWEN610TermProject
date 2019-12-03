@@ -1,6 +1,6 @@
 package com.webcheckers.model;
 
-public class GamePiece implements Move{
+public class GamePiece{
     String color;
     Boolean IsKing = false;
 
