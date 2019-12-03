@@ -1,8 +1,8 @@
 package com.webcheckers.model;
 
-public class Move{
-    int direction;
-    
-    public void move(){}
+public interface Move{
+    int direction = 1;
+
+    public void move();
 
 }
