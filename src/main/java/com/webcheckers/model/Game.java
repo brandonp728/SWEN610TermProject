@@ -1,6 +1,6 @@
 package com.webcheckers.model;
 
-import java.util.Date;
+import java.util.*;
 
 //To Do:
 //      Gets and Sets
