@@ -17,11 +17,11 @@ import spark.TemplateViewRoute;
  * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
  */
 public class GameController implements TemplateViewRoute {
-
+  static final LocalDateTime startTime = LocalDateTime.now();
   @Override
   public ModelAndView handle(Request request, Response response) {
     Map<String, Object> vm = new HashMap<>();
-    LocalDateTime startTime = LocalDateTime.;
+   
     Game newGame = new Game();
 
     vm.put("gameTime",  newGame.getElapsedTime(startTime));
