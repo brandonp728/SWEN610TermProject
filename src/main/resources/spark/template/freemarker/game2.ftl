@@ -22,7 +22,8 @@
     </div>
     
     <div class="body">
-     ${gameTime} 
+     <p>Time elapsed: ${gameTime}</p> 
+     <p>Current difficulty: ${difficulty}</p> 
     </div>
   </div>
 

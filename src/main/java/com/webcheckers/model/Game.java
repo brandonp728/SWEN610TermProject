@@ -9,7 +9,7 @@ import java.time.Duration;
 //      Function functionality
 
 public class Game{
-    Date timeStamp;     //Time Game took place
+    LocalDateTime timeStamp;     //Time Game took place
     String p1ID;        //p1ID
     String p2ID;        //p2ID
     String difficulty;  //Game difficulty
@@ -19,16 +19,28 @@ public class Game{
 
     }
 
-    //@return time elapsed since beginning of game
-    public Duration getElapsedTime(LocalDateTime GameStartTime){
-        LocalDateTime now = LocalDateTime.now();
+    public Game(LocalDateTime startTime)
+    {
+        this.timeStamp = startTime;
+        this.difficulty = "Normal";
+    }
 
-        return Duration.between(GameStartTime, now);
+    public Game(LocalDateTime startTime, String selectedDifficulty)
+    {
+        this.timeStamp = startTime;
+        this.difficulty = selectedDifficulty;
+    }
+
+    //@return time elapsed since beginning of game
+    public Duration getElapsedTime(){
+        LocalDateTime now = LocalDateTime.now();
+            
+        return Duration.between(this.timeStamp, now);
     }
 
     //
-    public void displayDifficulty(){
-
+    public String displayDifficulty(){
+        return difficulty;
     }
 
     //No idea why this is here
