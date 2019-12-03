@@ -7,7 +7,7 @@ CREATE TABLE PLAYER (
     player_id SERIAL PRIMARY KEY,
     f_name text,
     l_name text,
-    is_computer bit,
+    is_computer boolean,
     games_won int,
     games_lost int
 );

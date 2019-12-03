@@ -42,19 +42,43 @@ public class PostLoginRoute implements TemplateViewRoute {
     String error = "";
     String username = request.queryParams("username");
     String password = request.queryParams("password");
+    
     if(isValidUsername(username) && isValidPassword(password)) {
-        // Query the username
-        Boolean isConnected = connectToDatabase();
-        // If they exist, log them in
-        // If not, display error
-    }
-    else {
+        Connection connection = connectToDatabase();
+        if(connection != null) {
+            // Query the username
+            ResultSet results = null;
+            try {
+                Statement statement = connection.createStatement();
+                String query = "SELECT * FROM Account where username = %s and pwd_hash = %s";
+                String.format(query, username, password);
+                results = statement.executeQuery(query);
+            } catch(SQLException s) {
+                s.printStackTrace();
+                System.out.println("Something went wrong with the statement!");
+                error = "Something went wrong with the Database!";
+                vm.put("error", error);
+                return new ModelAndView(vm, "login.ftl");
+            }
+            
+
+            // If they exist, log them in
+            // If not, display error
+        } else {
+            error = "Something went wrong with the Database!";
+            vm.put("error", error);
+            return new ModelAndView(vm, "login.ftl");
+        }  
+    } else {
         error = "Invalid Username or Password";
+        vm.put("error", error);
+        return new ModelAndView(vm, "login.ftl");
     }
     vm.put("error", error);
     return new ModelAndView(vm, "login.ftl");
   }
-  private boolean connectToDatabase(){
+
+  private Connection connectToDatabase(){
     try {
         String connectionString = "jdbc:postgresql://localhost:5432/webcheckers";
         String psqlUser = "postgres";
@@ -62,11 +86,11 @@ public class PostLoginRoute implements TemplateViewRoute {
         String.format(connectionString, psqlUser, psqlPass);
         Connection conn = DriverManager.getConnection(connectionString, psqlUser, psqlPass);
         System.out.println("Connected to the db!");
-        return true;
+        return conn;
     } catch(Exception e) {
         e.printStackTrace();
         System.out.println("Uh oh sisters!");
     }
-    return false;
+    return null;
   }
 }
