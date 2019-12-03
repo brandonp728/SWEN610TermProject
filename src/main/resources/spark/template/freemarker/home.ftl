@@ -15,9 +15,21 @@
     </div>
     
     <div class="body">
-      <p>Welcome to the world of online Checkers.</p>
+      <h2>Welcome to the world of online Checkers!</h2>
     </div>
-    
+
+    <div class = "image" align="center">
+      <img src = "/img/checkers_image.jpg" height="300" width="500">
+    </div>
+
+    <div class = "body">
+      <table cellspacing = "30" align="center">
+        <tr>
+          <td><h3><a href="/login">Log In</a></h3></td>
+          <td><h3><a href="/register">Register</a><h3></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </body>
 </html>

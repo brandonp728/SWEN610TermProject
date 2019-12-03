@@ -2,18 +2,21 @@ package com.webcheckers.ui;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import spark.TemplateEngine;
 import spark.TemplateViewRoute;
 
-/**
- * The Web Controller for the Home page.
- *
- * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
- */
-public class HomeController implements TemplateViewRoute {
+public class GetHomeRoute implements TemplateViewRoute {
+
+  private static final Logger LOG = Logger.getLogger(GetHomeRoute.class.getName());
+  
+  public GetHomeRoute() {
+    System.out.println("GetHomeRoute is online.");
+  }
 
   @Override
   public ModelAndView handle(Request request, Response response) {

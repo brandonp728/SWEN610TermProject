@@ -10,11 +10,6 @@ import spark.Request;
 import spark.Response;
 import spark.TemplateViewRoute;
 
-/**
- * The Web Controller for the Home page.
- *
- * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
- */
 public class GamePieceController implements TemplateViewRoute {
 
   @Override
