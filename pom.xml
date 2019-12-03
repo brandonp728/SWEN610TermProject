@@ -61,6 +61,12 @@
       <version>2.3.5</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+      <groupId>com.webcheckers</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.8</version>
+    </dependency>
 
   </dependencies>
 
