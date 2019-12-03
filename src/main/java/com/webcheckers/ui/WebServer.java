@@ -120,6 +120,12 @@ public class WebServer {
     //// Create separate Route classes to handle each route; this keeps your
     //// code clean; using small classes.
 
+    /////////////////////////////////////////////////
+    ////                                         ////
+    ////              GET METHODS                ////
+    ////                                         ////
+    ////                                         ////
+    /////////////////////////////////////////////////
     // Shows the Checkers game Home page.
     get(HOME_URL, new GetHomeRoute(), templateEngine);
 
@@ -129,6 +135,13 @@ public class WebServer {
 
     get("/Pieces", new GamePieceController(), templateEngine);
 
+
+    /////////////////////////////////////////////////
+    ////                                         ////
+    ////              POST METHODS               ////
+    ////                                         ////
+    ////                                         ////
+    /////////////////////////////////////////////////
     post(LOGIN_URL, new PostLoginRoute(), templateEngine);
 
     post(REGISTER_URL, new PostRegisterRoute(), templateEngine);

@@ -13,6 +13,10 @@ import spark.TemplateViewRoute;
 public class GetHomeRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(GetHomeRoute.class.getName());
+  
+  public GetHomeRoute() {
+    System.out.println("GetHomeRoute is online.");
+  }
 
   @Override
   public ModelAndView handle(Request request, Response response) {

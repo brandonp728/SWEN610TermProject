@@ -19,21 +19,36 @@ import spark.TemplateViewRoute;
 public class PostLoginRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(PostLoginRoute.class.getName());
-  
+
+  public PostLoginRoute() {
+    System.out.println("PostLoginRoute is online.");
+  }
+
+  public boolean isValidUsername(String username) {
+    return (username.contains(".com") || username.contains(".edu") || username.contains(".net")) && username.length() > 0;
+  }
+
+  public boolean isValidPassword(String password) {
+    return password.length() > 0;
+  }
+
   @Override
   public ModelAndView handle(Request request, Response response) {
-    // start building the View-Model
     final Map<String, Object> vm = new HashMap<>();
     vm.put("title", "Login!");
-
+    
+    String error = "";
     String username = request.queryParams("username");
     String password = request.queryParams("password");
-    LOG.fine(username);
-    LOG.fine(password);
-    Integer ul = new Integer(username.length());
-    Integer up = new Integer(password.length());
-    LOG.fine(ul.toString());
-    LOG.fine(up.toString());
+    if(isValidUsername(username) && isValidPassword(password)) {
+        // Query the username
+        // If they exist, log them in
+        // If not, display error
+    }
+    else {
+        error = "Invalid Username or Password";
+    }
+    vm.put("error", error);
     return new ModelAndView(vm, "login.ftl");
   }
 }

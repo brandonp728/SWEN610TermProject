@@ -20,9 +20,12 @@ public class PostRegisterRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(PostRegisterRoute.class.getName());
   
+  public PostRegisterRoute() {
+    System.out.println("PostRegisterRoute is online.");
+  }
+
   @Override
   public ModelAndView handle(Request request, Response response) {
-    // start building the View-Model
     final Map<String, Object> vm = new HashMap<>();
     vm.put("title", "Register!");
     return new ModelAndView(vm, "register.ftl");

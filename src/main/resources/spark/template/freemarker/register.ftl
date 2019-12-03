@@ -17,7 +17,7 @@
     <h3>No account? Sign up</h3>
     <div>
         <form method = "POST">
-          Username: <input name = "username" pattern = "*.com | *.net | *.edu"/>
+          Username: <input name = "username"/>
           <br />
           Password:  <input name = "password" />
           <br />

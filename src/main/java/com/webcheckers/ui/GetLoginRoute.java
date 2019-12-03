@@ -14,16 +14,15 @@ public class GetLoginRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(GetLoginRoute.class.getName());
 
+  public GetLoginRoute() {
+    LOG.config("GetLoginRoute is online.");
+  }
+
   @Override
   public ModelAndView handle(Request request, Response response) {
-    
-    String username = request.queryParams("username");
-    String password = request.queryParams("password");
-    LOG.fine(username);
-    LOG.fine(password);
-    
     Map<String, Object> vm = new HashMap<>();
     vm.put("title", "Login!");
+    vm.put("error", "");
     return new ModelAndView(vm , "login.ftl");
   }
 

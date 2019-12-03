@@ -16,8 +16,9 @@
 
     <h3>Got an account? Log in</h3>
     <div id="loginform">
+        <h4>${error}</h4>
         <form method = "POST">
-          Username: <input name = "username" pattern = "*.com | *.net | *.edu"/>
+          Username: <input name = "username"/>
           <br />
           Password:  <input name = "password" />
           <br />
