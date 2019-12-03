@@ -39,43 +39,56 @@ public class PostLoginRoute implements TemplateViewRoute {
     final Map<String, Object> vm = new HashMap<>();
     vm.put("title", "Login!");
     
+    // Error flag
     String error = "";
+
+    // Information from forms
     String username = request.queryParams("username");
     String password = request.queryParams("password");
     
+    // Check if the username and password are valid
     if(isValidUsername(username) && isValidPassword(password)) {
         Connection connection = connectToDatabase();
         if(connection != null) {
             // Query the username
-            ResultSet results = null;
-            try {
-                Statement statement = connection.createStatement();
-                String query = "SELECT * FROM Account where username = %s and pwd_hash = %s";
-                String.format(query, username, password);
-                results = statement.executeQuery(query);
-            } catch(SQLException s) {
-                s.printStackTrace();
-                System.out.println("Something went wrong with the statement!");
-                error = "Something went wrong with the Database!";
+            String dbUsername = queryForUser(connection, username, password);
+
+            // If there was an error fetching the user
+            if(dbUsername.equals("error")) {
+                error = "Something went wrong with the database!";
+                vm.put("error", error);
+                return new ModelAndView(vm, "login.ftl");
+            
+            } 
+            // If the username was not found
+            else if(dbUsername.equals("")) {
+                error = "That user doesn't exist!";
                 vm.put("error", error);
                 return new ModelAndView(vm, "login.ftl");
             }
-            
-
-            // If they exist, log them in
-            // If not, display error
+            // If the username was found, log them in
+            else if(dbUsername.equals(username)) {
+                vm.put("title", "Welcome!");
+                return new ModelAndView(vm, "home.ftl");
+            }
+            // If for some reason none of the other flags are hit
+            else {
+                error = "Something weird happened!";
+                vm.put("error", error);
+                return new ModelAndView(vm, "login.ftl");
+            }
+        // Issue connecting to the database    
         } else {
             error = "Something went wrong with the Database!";
             vm.put("error", error);
             return new ModelAndView(vm, "login.ftl");
-        }  
+        }
+    // Handle invalid username/password  
     } else {
         error = "Invalid Username or Password";
         vm.put("error", error);
         return new ModelAndView(vm, "login.ftl");
     }
-    vm.put("error", error);
-    return new ModelAndView(vm, "login.ftl");
   }
 
   private Connection connectToDatabase(){
@@ -92,5 +105,33 @@ public class PostLoginRoute implements TemplateViewRoute {
         System.out.println("Uh oh sisters!");
     }
     return null;
+  }
+
+  private String queryForUser(Connection connection, String username, String password) {
+    try {
+    // Construct query
+      String query = "SELECT * FROM Account where username = ? and pwd_hash = ?";
+      PreparedStatement pstmnt = connection.prepareStatement(query);
+      
+      // Adds the desired username to the ?
+      pstmnt.setString(1, username);
+      pstmnt.setString(2, password);
+
+      // Execute query and get resultset
+      ResultSet results = pstmnt.executeQuery();
+
+      // Move the cursor in the resultset
+      if(results.next()){
+          // A user with that name was found so return the name
+          return results.getString("username");
+      } 
+
+      // No username was found so send an empty string
+      return "";
+    } catch(SQLException s) {
+        s.printStackTrace();
+        System.out.println("Something went wrong with the statement!");
+        return "error";
+    }
   }
 }
