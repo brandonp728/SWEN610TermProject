@@ -7,6 +7,8 @@ import java.util.Properties;
 import java.util.logging.Logger;
 import java.sql.*;
 
+import com.webcheckers.model.*;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -51,7 +53,10 @@ public class PostLoginRoute implements TemplateViewRoute {
         Connection connection = connectToDatabase();
         if(connection != null) {
             // Query the username
-            String dbUsername = queryForUser(connection, username, password);
+            Player player = new Player();
+            Account account = new Account();
+
+            String dbUsername = queryForUser(connection, username, password, player, account);
 
             // If there was an error fetching the user
             if(dbUsername.equals("error")) {
@@ -69,6 +74,7 @@ public class PostLoginRoute implements TemplateViewRoute {
             // If the username was found, log them in
             else if(dbUsername.equals(username)) {
                 vm.put("title", "Welcome!");
+                vm.put("loggedIn", true);
                 return new ModelAndView(vm, "home.ftl");
             }
             // If for some reason none of the other flags are hit
@@ -107,13 +113,13 @@ public class PostLoginRoute implements TemplateViewRoute {
     return null;
   }
 
-  private String queryForUser(Connection connection, String username, String password) {
+  private String queryForUser(Connection connection, String username, String password, Player player, Account account) {
     try {
     // Construct query
       String query = "SELECT * FROM Account where username = ? and pwd_hash = ?";
       PreparedStatement pstmnt = connection.prepareStatement(query);
       
-      // Adds the desired username to the ?
+      // Adds the desired params to the ?
       pstmnt.setString(1, username);
       pstmnt.setString(2, password);
 
@@ -123,7 +129,32 @@ public class PostLoginRoute implements TemplateViewRoute {
       // Move the cursor in the resultset
       if(results.next()){
           // A user with that name was found so return the name
-          return results.getString("username");
+          Integer aid = new Integer(results.getInt("account_id"));
+          account.setAccountId(aid.toString());
+          account.setPlayerId(results.getString("player_id"));
+          account.setUsername(results.getString("username"));
+          
+          query = "SELECT * FROM player WHERE player_id = ?";
+          pstmnt = connection.prepareStatement(query);
+          Integer pid = new Integer(account.getPlayerId());
+          pstmnt.setInt(1, pid);
+          System.out.println(pstmnt.toString());
+          results = pstmnt.executeQuery();
+
+          results.next();
+          
+          player.setFirstName(results.getString("f_name"));
+          player.setLastName(results.getString("l_name"));
+          player.setGamesWon(results.getInt("games_won"));
+          int gamesLost = results.getInt("games_lost");
+          int gamesWon = results.getInt("games_won");
+          player.setGamesPlayed(gamesLost + gamesWon);
+          player.setPlayerId(results.getString("player_id"));
+
+          System.out.println(player.toString());
+          System.out.println(account.toString());
+
+          return account.getUsername();
       } 
 
       // No username was found so send an empty string

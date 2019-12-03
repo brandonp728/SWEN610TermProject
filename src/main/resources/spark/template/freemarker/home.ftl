@@ -21,7 +21,7 @@
     <div class = "image" align="center">
       <img src = "/img/checkers_image.jpg" height="300" width="500">
     </div>
-
+  <#if loggedIn>
     <div class = "body">
       <table cellspacing = "30" align="center">
         <tr>
@@ -30,6 +30,7 @@
         </tr>
       </table>
     </div>
+    </#if>
   </div>
 </body>
 </html>

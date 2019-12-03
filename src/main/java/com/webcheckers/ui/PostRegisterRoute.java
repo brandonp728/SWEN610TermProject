@@ -79,6 +79,7 @@ public class PostRegisterRoute implements TemplateViewRoute {
                 
                 if(inserted) {
                     vm.put("title", "Welcome!");
+                    vm.put("loggedIn", true);
                     return new ModelAndView(vm, "home.ftl");
                 } else {
                     error = "Something went wrong with the insert!";
