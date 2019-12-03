@@ -48,9 +48,11 @@ microframework.
     \q
   ```
 
-6) ##For this part you must be in the same folder as the db-create.sql file.
+6) #### For this part you must be in the same folder as the db-create.sql file.
 Run the creation script with the command (This runs the file on the sam2020 database and creates the specified tables):
-  >psql -U postgres -f db-create.sql webcheckers
+```
+  psql -U postgres -f db-create.sql webcheckers
+```
 
 7) Connect to the database using:
   ```
