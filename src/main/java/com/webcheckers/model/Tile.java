@@ -1,7 +1,5 @@
 package com.webcheckers.model;
 
-import java.util.Dictionary;
-
 public class Tile {
     String color;
 
@@ -12,7 +10,7 @@ public class Tile {
      * @return String p1, p2, false
      */
     public String hasGamePiece(){
-        
+
         return "false";
     }
 }

@@ -15,15 +15,22 @@
     <div class="navigation">
     <#if currentPlayer??>
       <a href="/">my home</a> |
-      <a href="/signout">sign out [${playerName}]</a>
     <#else>
       <a href="/signin">sign in</a>
     </#if>
     </div>
     
     <div class="body">
-     <p>Time elapsed: ${gameTime}</p> 
-     <p>Current difficulty: ${difficulty}</p> 
+     <p>Piece One: </p> 
+     <ul>
+      <li>Color: ${blackPieceColor}</li>
+      <li>King?: ${isBlackKing}</li> 
+     </ul>
+     <p>Piece Two: </p> 
+     <ul>
+      <li>Color: ${redPieceColor}</li>
+      <li>King?: ${isRedKing}</li> 
+     </ul>
     </div>
   </div>
 
