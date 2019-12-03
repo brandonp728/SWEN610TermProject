@@ -33,8 +33,6 @@ import spark.TemplateEngine;
  *     <li>Redirecting to a different application URL</li>
  * </ul>
  * </p>
- *
- * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
  */
 public class WebServer {
 
@@ -47,7 +45,9 @@ public class WebServer {
    */
   public static final String HOME_URL = "/";
 
-  public static final String GAME_URL = "/Game";
+  public static final String LOGIN_URL = "/login";
+
+  public static final String REGISTER_URL = "/register";
 
   //
   // Attributes
@@ -121,11 +121,17 @@ public class WebServer {
     //// code clean; using small classes.
 
     // Shows the Checkers game Home page.
-    get(HOME_URL, new HomeController(), templateEngine);
+    get(HOME_URL, new GetHomeRoute(), templateEngine);
 
-    get(GAME_URL, new GameController(), templateEngine);
+    get(LOGIN_URL, new GetLoginRoute(), templateEngine);
+
+    get(REGISTER_URL, new GetRegisterRoute(), templateEngine);
 
     get("/Pieces", new GamePieceController(), templateEngine);
+
+    post(LOGIN_URL, new PostLoginRoute(), templateEngine);
+
+    post(REGISTER_URL, new PostRegisterRoute(), templateEngine);
 
   }
 
