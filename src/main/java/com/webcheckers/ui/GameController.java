@@ -23,9 +23,11 @@ public class GameController implements TemplateViewRoute {
   public ModelAndView handle(Request request, Response response) {
     Map<String, Object> vm = new HashMap<>();
    
-    Game newGame = new Game();
-    String readableTime = formatDuration(newGame.getElapsedTime(startTime));
+    Game newGame = new Game(startTime);
+    String readableTime = formatDuration(newGame.getElapsedTime());
+    String difficulty = newGame.displayDifficulty();
     vm.put("gameTime", readableTime);
+    vm.put("difficulty", difficulty);
     return new ModelAndView(vm , "game2.ftl");
   }
 
