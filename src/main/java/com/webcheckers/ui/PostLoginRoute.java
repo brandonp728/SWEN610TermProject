@@ -15,21 +15,19 @@ import spark.Response;
 import spark.Session;
 import spark.TemplateViewRoute;
 
-/**
- * The {@code POST /guess} route handler.
- *
- * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
- */
 public class PostLoginRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(PostLoginRoute.class.getName());
 
   private HashMap<Account, Player> AccountPlayerMap;
 
-  public PostLoginRoute(HashMap<Account, Player> AccountPlayerMap) {
+  private Account[] accounts;
+
+  public PostLoginRoute(HashMap<Account, Player> AccountPlayerMap, Account[] accounts) {
     System.out.println("PostLoginRoute is online.");
 
     this.AccountPlayerMap = AccountPlayerMap;
+    this.accounts = accounts;
   }
 
   public boolean isValidUsername(String username) {
@@ -78,9 +76,9 @@ public class PostLoginRoute implements TemplateViewRoute {
             // If the username was found, log them in
             else if(dbUsername.equals(username)) {
                 String fullName = player.getFirstName() + " " + player.getLastName();
-                vm.put("title", "Choose Game!");
-                vm.put("username", fullName);
-                return new ModelAndView(vm, "choosegame.ftl");
+                vm.put("title", "Welcome " + fullName + "!");
+                vm.put("loggedIn", true);
+                return new ModelAndView(vm, "home.ftl");
             }
             // If for some reason none of the other flags are hit
             else {
@@ -156,6 +154,7 @@ public class PostLoginRoute implements TemplateViewRoute {
           player.setPlayerId(results.getString("player_id"));
           
           AccountPlayerMap.put(account, player);
+          accounts[0] = account;
 
           return account.getUsername();
       } 

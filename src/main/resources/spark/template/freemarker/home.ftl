@@ -11,7 +11,7 @@
     <h1>Web Checkers</h1>
     
     <div class="navigation">
-      <a href="/">my home</a>
+      <a href="/">my home</a><#if loggedIn><a href="/choosegame" style="margin-left: 40px;">choose a game</a></#if>
     </div>
     
     <div class="body">
@@ -34,7 +34,7 @@
     <#if loggedIn>
       <div class = "body">
         <p>Ready to play a game?</p>
-         <button type="submit" formaction="/choosegame">You bet!</button>
+         <a href="/choosegame">You bet!</a>
       </div>
     </#if>
   </div>

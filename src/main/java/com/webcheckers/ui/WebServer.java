@@ -130,6 +130,7 @@ public class WebServer {
 
     //Create the Player and Acccount HashMap to store the user information
     HashMap<Account, Player> AccountPlayerMap = new HashMap<Account, Player>();
+    Account[] accounts = new Account[2];
 
 
     /////////////////////////////////////////////////
@@ -139,13 +140,13 @@ public class WebServer {
     ////                                         ////
     /////////////////////////////////////////////////
     // Shows the Checkers game Home page.
-    get(HOME_URL, new GetHomeRoute(AccountPlayerMap), templateEngine);
+    get(HOME_URL, new GetHomeRoute(AccountPlayerMap, accounts), templateEngine);
 
     get(LOGIN_URL, new GetLoginRoute(), templateEngine);
 
     get(REGISTER_URL, new GetRegisterRoute(), templateEngine);
 
-    get(CHOOSE_GAME_URL, new GetChooseGameRoute(AccountPlayerMap), templateEngine);
+    get(CHOOSE_GAME_URL, new GetChooseGameRoute(AccountPlayerMap, accounts), templateEngine);
 
     get("/Pieces", new GamePieceController(), templateEngine);
 
@@ -156,9 +157,9 @@ public class WebServer {
     ////                                         ////
     ////                                         ////
     /////////////////////////////////////////////////
-    post(LOGIN_URL, new PostLoginRoute(AccountPlayerMap), templateEngine);
+    post(LOGIN_URL, new PostLoginRoute(AccountPlayerMap, accounts), templateEngine);
 
-    post(REGISTER_URL, new PostRegisterRoute(AccountPlayerMap), templateEngine);
+    post(REGISTER_URL, new PostRegisterRoute(AccountPlayerMap, accounts), templateEngine);
 
   }
 

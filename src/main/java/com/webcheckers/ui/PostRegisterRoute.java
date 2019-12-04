@@ -16,21 +16,19 @@ import spark.Response;
 import spark.Session;
 import spark.TemplateViewRoute;
 
-/**
- * The {@code POST /guess} route handler.
- *
- * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
- */
 public class PostRegisterRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(PostRegisterRoute.class.getName());
 
   private HashMap<Account, Player> AccountPlayerMap;
   
-  public PostRegisterRoute(HashMap<Account, Player> AccountPlayerMap) {
+  private Account[] accounts; 
+  
+  public PostRegisterRoute(HashMap<Account, Player> AccountPlayerMap, Account[] accounts) {
     System.out.println("PostRegisterRoute is online.");
 
     this.AccountPlayerMap = AccountPlayerMap;
+    this.accounts = accounts;
   }
 
   public boolean isValidUsername(String username) {
@@ -85,10 +83,11 @@ public class PostRegisterRoute implements TemplateViewRoute {
                 
                 if(inserted) {
                     AccountPlayerMap.put(newAccount, newPlayer);
+                    accounts[0] = newAccount;
                     String fullName = newPlayer.getFirstName() + " " + newPlayer.getLastName();
-                    vm.put("title", "Choose Game!");
-                    vm.put("username", fullName);
-                    return new ModelAndView(vm, "choosegame.ftl");
+                    vm.put("title", "Welcome " + fullName + "!");
+                    vm.put("loggedIn", true);
+                    return new ModelAndView(vm, "home.ftl");
                 } else {
                     error = "Something went wrong with the insert!";
                     vm.put("error", error);

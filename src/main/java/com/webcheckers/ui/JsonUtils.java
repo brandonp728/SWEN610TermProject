@@ -4,11 +4,6 @@ import spark.ResponseTransformer;
 
 import com.google.gson.Gson;
 
-/**
- * A Utility class for parsing and formatting JSON data.
- *
- * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
- */
 public class JsonUtils {
 
   private static final Gson GSON = new Gson();
