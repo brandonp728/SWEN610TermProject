@@ -35,6 +35,15 @@ public class GetPlayGameRoute implements TemplateViewRoute {
 
     GameBoard gameBoard = new GameBoard();
     Tile[][] tilesOfBoard = gameBoard.getBoard();
+    
+    String htmlBoard = drawBoard(tilesOfBoard);    
+
+    vm.put("board", htmlBoard);
+
+    return new ModelAndView(vm, "playgame.ftl");
+  }
+
+  private String drawBoard(Tile[][] tilesOfBoard) {
     String htmlBoard = "<table align=\"center\" border=\"1\" height=\"500\" width=\"500\">";
     String lastColorAdded = "none";
     for(int i=0; i < tilesOfBoard.length; i++) {
@@ -61,10 +70,7 @@ public class GetPlayGameRoute implements TemplateViewRoute {
         htmlBoard+="</tr>";
     }
     htmlBoard+="</table>";
-
-    vm.put("board", htmlBoard);
-
-    return new ModelAndView(vm, "playgame.ftl");
+    return htmlBoard;
   }
 
 }
