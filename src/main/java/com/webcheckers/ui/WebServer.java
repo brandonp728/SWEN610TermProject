@@ -133,6 +133,8 @@ public class WebServer {
 
     get(REGISTER_URL, new GetRegisterRoute(), templateEngine);
 
+    get("/Game", new GameController(), templateEngine);
+
     get("/Pieces", new GamePieceController(), templateEngine);
 
 
