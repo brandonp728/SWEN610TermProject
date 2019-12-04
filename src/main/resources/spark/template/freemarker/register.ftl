@@ -10,14 +10,14 @@
   
     <h1>Register With Us</h1>
     
-    <div class="navigation">
+    <div class="navigation" align="center">
       <a href="/">my home</a>
     </div>
 
     <h3>No account? Sign up</h3>
     <div>
         <h4>${error}</h4>
-        <form action="/home" method = "POST">
+        <form method = "POST">
           First Name: <input name = "f_name"/>
           <br />
           Last Name: <input name = "l_name"/>

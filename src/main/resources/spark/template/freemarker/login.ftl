@@ -10,7 +10,7 @@
   
     <h1>Log In</h1>
     
-    <div class="navigation">
+    <div class="navigation" align="center">
       <a href="/">my home</a>
     </div>
 
@@ -22,7 +22,7 @@
           <br />
           Password:  <input name = "password" />
           <br />
-          <a href="/home"><button type="submit">Log In</button></a>
+          <button type="submit">Log In</button>
         </form>
     </div>
 </body>

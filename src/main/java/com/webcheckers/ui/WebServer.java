@@ -57,6 +57,8 @@ public class WebServer {
 
   public static final String CHOOSE_GAME_URL = "/choosegame";
 
+  public static final String CREATE_GAME_URL= "/creategame";
+
   //
   // Attributes
   //
@@ -148,6 +150,8 @@ public class WebServer {
 
     get(CHOOSE_GAME_URL, new GetChooseGameRoute(AccountPlayerMap, accounts), templateEngine);
 
+    get(CREATE_GAME_URL, new GetCreateGameRoute(AccountPlayerMap, accounts), templateEngine);
+
     get("/Pieces", new GamePieceController(), templateEngine);
 
 
@@ -160,6 +164,8 @@ public class WebServer {
     post(LOGIN_URL, new PostLoginRoute(AccountPlayerMap, accounts), templateEngine);
 
     post(REGISTER_URL, new PostRegisterRoute(AccountPlayerMap, accounts), templateEngine);
+
+    post(CREATE_GAME_URL, new PostCreateGameRoute(AccountPlayerMap, accounts), templateEngine);
 
   }
 
