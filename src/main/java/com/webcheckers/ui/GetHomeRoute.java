@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import com.webcheckers.model.*;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -14,8 +16,12 @@ public class GetHomeRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(GetHomeRoute.class.getName());
   
-  public GetHomeRoute() {
+  private HashMap<Account, Player> AccountPlayerMap;
+
+  public GetHomeRoute(HashMap<Account, Player> AccountPlayerMap) {
     System.out.println("GetHomeRoute is online.");
+
+    this.AccountPlayerMap = AccountPlayerMap;
   }
 
   @Override

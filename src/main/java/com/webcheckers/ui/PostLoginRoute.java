@@ -24,8 +24,12 @@ public class PostLoginRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(PostLoginRoute.class.getName());
 
-  public PostLoginRoute() {
+  private HashMap<Account, Player> AccountPlayerMap;
+
+  public PostLoginRoute(HashMap<Account, Player> AccountPlayerMap) {
     System.out.println("PostLoginRoute is online.");
+
+    this.AccountPlayerMap = AccountPlayerMap;
   }
 
   public boolean isValidUsername(String username) {
@@ -73,9 +77,10 @@ public class PostLoginRoute implements TemplateViewRoute {
             }
             // If the username was found, log them in
             else if(dbUsername.equals(username)) {
-                vm.put("title", "Welcome!");
-                vm.put("loggedIn", true);
-                return new ModelAndView(vm, "home.ftl");
+                String fullName = player.getFirstName() + " " + player.getLastName();
+                vm.put("title", "Choose Game!");
+                vm.put("username", fullName);
+                return new ModelAndView(vm, "choosegame.ftl");
             }
             // If for some reason none of the other flags are hit
             else {
@@ -138,7 +143,6 @@ public class PostLoginRoute implements TemplateViewRoute {
           pstmnt = connection.prepareStatement(query);
           Integer pid = new Integer(account.getPlayerId());
           pstmnt.setInt(1, pid);
-          System.out.println(pstmnt.toString());
           results = pstmnt.executeQuery();
 
           results.next();
@@ -150,9 +154,8 @@ public class PostLoginRoute implements TemplateViewRoute {
           int gamesWon = results.getInt("games_won");
           player.setGamesPlayed(gamesLost + gamesWon);
           player.setPlayerId(results.getString("player_id"));
-
-          System.out.println(player.toString());
-          System.out.println(account.toString());
+          
+          AccountPlayerMap.put(account, player);
 
           return account.getUsername();
       } 

@@ -24,9 +24,13 @@ import spark.TemplateViewRoute;
 public class PostRegisterRoute implements TemplateViewRoute {
 
   private static final Logger LOG = Logger.getLogger(PostRegisterRoute.class.getName());
+
+  private HashMap<Account, Player> AccountPlayerMap;
   
-  public PostRegisterRoute() {
+  public PostRegisterRoute(HashMap<Account, Player> AccountPlayerMap) {
     System.out.println("PostRegisterRoute is online.");
+
+    this.AccountPlayerMap = AccountPlayerMap;
   }
 
   public boolean isValidUsername(String username) {
@@ -55,15 +59,16 @@ public class PostRegisterRoute implements TemplateViewRoute {
             String dbUsername = queryForUser(connection, username);
             
             // Error checking if something went wrong
+            // If the username == error it means that something 
+            //      didn't connect in the database
+            // Else if the query returned a username
+            //      then the user already exists
+            //Else this is a new user so 
             if (dbUsername.equals("error")) {
                 error = "Something went wrong with the Database!";
                 vm.put("error", error);
                 return new ModelAndView(vm, "register.ftl");
-            }
-            
-            // Check if the person exists
-            if(dbUsername.equals(username)) {
-                // If they do, return an error
+            } else if(dbUsername.equals(username)) {
                 error = "That user already exists!";
                 vm.put("error", error);
                 return new ModelAndView(vm, "register.ftl");
@@ -71,6 +76,7 @@ public class PostRegisterRoute implements TemplateViewRoute {
                 // If they don't add them
                 Player newPlayer = new Player();
                 Account newAccount = new Account();
+
                 newPlayer.setFirstName(firstName);
                 newPlayer.setLastName(lastName);
                 newAccount.setUsername(username);
@@ -78,9 +84,11 @@ public class PostRegisterRoute implements TemplateViewRoute {
                 Boolean inserted = insertNewUser(connection, newPlayer, newAccount, password);
                 
                 if(inserted) {
-                    vm.put("title", "Welcome!");
-                    vm.put("loggedIn", true);
-                    return new ModelAndView(vm, "home.ftl");
+                    AccountPlayerMap.put(newAccount, newPlayer);
+                    String fullName = newPlayer.getFirstName() + " " + newPlayer.getLastName();
+                    vm.put("title", "Choose Game!");
+                    vm.put("username", fullName);
+                    return new ModelAndView(vm, "choosegame.ftl");
                 } else {
                     error = "Something went wrong with the insert!";
                     vm.put("error", error);
