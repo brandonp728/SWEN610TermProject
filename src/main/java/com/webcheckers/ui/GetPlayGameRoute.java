@@ -35,19 +35,27 @@ public class GetPlayGameRoute implements TemplateViewRoute {
 
     GameBoard gameBoard = new GameBoard();
     Tile[][] tilesOfBoard = gameBoard.getBoard();
-    String htmlBoard = "<table align=\"center\" border=\"1\">";
-
+    String htmlBoard = "<table align=\"center\" border=\"1\" height=\"500\" width=\"500\">";
+    String lastColorAdded = "none";
     for(int i=0; i < tilesOfBoard.length; i++) {
         htmlBoard+="<tr>";
+        if(lastColorAdded.equals("black")) {
+            lastColorAdded = "red";
+        } else if(lastColorAdded.equals("red")) {
+            lastColorAdded = "black";
+        }
         for(int j=0; j < tilesOfBoard[i].length; j++) {
-            if(i%2 == 0 && j%2 != 0) {
+            
+            if(lastColorAdded.equals("none") || lastColorAdded.equals("black")) {
                 tilesOfBoard[i][j].setColor("red");
                 htmlBoard += "<td style=\"background-color:red\">";
                 htmlBoard += "</td>";
-            } else {
+                lastColorAdded = "red";
+            } else if(lastColorAdded.equals("red")) {
                 tilesOfBoard[i][j].setColor("black");
                 htmlBoard += "<td style=\"background-color:black\">";
                 htmlBoard += "</td>";
+                lastColorAdded = "black";
             }
         }
         htmlBoard+="</tr>";
