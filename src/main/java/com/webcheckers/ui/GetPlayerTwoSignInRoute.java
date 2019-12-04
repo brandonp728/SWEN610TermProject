@@ -12,27 +12,28 @@ import spark.Response;
 import spark.TemplateEngine;
 import spark.TemplateViewRoute;
 
-public class GetCreateGameRoute implements TemplateViewRoute {
+public class GetPlayerTwoSignInRoute implements TemplateViewRoute {
 
-  private static final Logger LOG = Logger.getLogger(GetChooseGameRoute.class.getName());
+  private static final Logger LOG = Logger.getLogger(GetPlayerTwoSignInRoute.class.getName());
 
   private HashMap<Account, Player> AccountPlayerMap;
   private Account[] accounts;
+  private String difficulty;
   
-  public GetCreateGameRoute(HashMap<Account, Player> AccountPlayerMap, Account[] accounts) {
-    System.out.println("GetCreateGameRoute is online.");
+  public GetPlayerTwoSignInRoute(HashMap<Account, Player> AccountPlayerMap, Account[] accounts, String difficulty) {
+    System.out.println("GetPlayerTwoSignInRoute is online.");
 
     this.AccountPlayerMap = AccountPlayerMap;
     this.accounts = accounts;
+    this.difficulty = difficulty;
   }
 
   @Override
   public ModelAndView handle(Request request, Response response) {
     Map<String, Object> vm = new HashMap<>();
-    vm.put("title", "Create Game!!");
+    vm.put("title", "Player Two Sign In!!");
     vm.put("error", "");
-    vm.put("twoplayer", false);
-    return new ModelAndView(vm, "creategame.ftl");
+    return new ModelAndView(vm, "playertwosignin.ftl");
   }
 
 }

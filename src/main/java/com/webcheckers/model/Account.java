@@ -7,9 +7,9 @@ public class Account {
 
     // Default constructor
     public Account() {
-        this.pID = "0";
-        this.aID = "0";
-        String username = "";
+        this.pID = "-1";
+        this.aID = "-1";
+        String username = "The Computer";
     }
 
     // Constructor for creatinga  player from past data
