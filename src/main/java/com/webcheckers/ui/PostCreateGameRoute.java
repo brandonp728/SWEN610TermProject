@@ -44,10 +44,13 @@ public class PostCreateGameRoute implements TemplateViewRoute {
 
         // Add them to the data
         AccountPlayerMap.put(computerAccount, computerPlayer);
-        accounts[2] = computerAccount;
+        accounts[1] = computerAccount;
         this.difficulty = difficulty;
-        // Go to gameboard
-        // Save difficulty
+        
+        vm.put("error", "Player One Press Play!");
+        vm.put("oneplayer", true);
+        vm.put("twoplayer", false);
+        return new ModelAndView(vm, "creategame.ftl");
     } else if(playerNumber.equals("2 Players")) {
         
         // Reload page with link to player 2 sign in
@@ -56,6 +59,7 @@ public class PostCreateGameRoute implements TemplateViewRoute {
         this.difficulty = difficulty;
 
         vm.put("error", error);
+        vm.put("oneplayer", false);
         vm.put("twoplayer", twoPlayer);
         return new ModelAndView(vm, "creategame.ftl");
     }

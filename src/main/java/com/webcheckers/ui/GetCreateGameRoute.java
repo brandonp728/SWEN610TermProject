@@ -31,6 +31,7 @@ public class GetCreateGameRoute implements TemplateViewRoute {
     Map<String, Object> vm = new HashMap<>();
     vm.put("title", "Create Game!!");
     vm.put("error", "");
+    vm.put("oneplayer", false);
     vm.put("twoplayer", false);
     return new ModelAndView(vm, "creategame.ftl");
   }

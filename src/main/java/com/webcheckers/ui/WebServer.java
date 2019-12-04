@@ -59,6 +59,8 @@ public class WebServer {
 
   public static final String CREATE_GAME_URL= "/creategame";
 
+  public static final String PLAY_GAME_URL = "/playgame";
+
   public static final String PLAYER_TWO_SIGN_IN_URL = "/playertwosignin";
 
   //
@@ -157,6 +159,8 @@ public class WebServer {
 
     get(PLAYER_TWO_SIGN_IN_URL, new GetPlayerTwoSignInRoute(AccountPlayerMap, accounts, difficulty), templateEngine);
     
+    get(PLAY_GAME_URL, new GetPlayGameRoute(AccountPlayerMap, accounts, difficulty), templateEngine);
+
     get("/Pieces", new GamePieceController(), templateEngine);
 
 
