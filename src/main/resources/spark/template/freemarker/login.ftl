@@ -10,19 +10,19 @@
   
     <h1>Log In</h1>
     
-    <div class="navigation">
+    <div class="navigation" align="center">
       <a href="/">my home</a>
     </div>
 
-    <h3>Got an account? Log in</h3>
-    <div id="loginform">
+    <h3 align="center">Got an account? Log in</h3>
+    <div id="loginform" align="center">
         <h4>${error}</h4>
         <form method = "POST">
-          Username: <input name = "username"/>
-          <br />
-          Password:  <input name = "password" />
-          <br />
-          <a href="/home"><button type="submit">Log In</button></a>
+          <table align="center">
+            <tr><td>Username: <input name = "username"/></td></tr>
+            <tr><td>Password: <input name = "password" /></td></tr>
+          </table>
+          <button type="submit">Log In</button>
         </form>
     </div>
 </body>

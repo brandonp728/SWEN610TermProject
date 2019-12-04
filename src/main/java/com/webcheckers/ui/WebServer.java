@@ -57,6 +57,10 @@ public class WebServer {
 
   public static final String CHOOSE_GAME_URL = "/choosegame";
 
+  public static final String CREATE_GAME_URL= "/creategame";
+
+  public static final String PLAYER_TWO_SIGN_IN_URL = "/playertwosignin";
+
   //
   // Attributes
   //
@@ -131,6 +135,7 @@ public class WebServer {
     //Create the Player and Acccount HashMap to store the user information
     HashMap<Account, Player> AccountPlayerMap = new HashMap<Account, Player>();
     Account[] accounts = new Account[2];
+    String difficulty = new String();
 
 
     /////////////////////////////////////////////////
@@ -148,6 +153,10 @@ public class WebServer {
 
     get(CHOOSE_GAME_URL, new GetChooseGameRoute(AccountPlayerMap, accounts), templateEngine);
 
+    get(CREATE_GAME_URL, new GetCreateGameRoute(AccountPlayerMap, accounts), templateEngine);
+
+    get(PLAYER_TWO_SIGN_IN_URL, new GetPlayerTwoSignInRoute(AccountPlayerMap, accounts, difficulty), templateEngine);
+    
     get("/Pieces", new GamePieceController(), templateEngine);
 
 
@@ -160,6 +169,8 @@ public class WebServer {
     post(LOGIN_URL, new PostLoginRoute(AccountPlayerMap, accounts), templateEngine);
 
     post(REGISTER_URL, new PostRegisterRoute(AccountPlayerMap, accounts), templateEngine);
+
+    post(CREATE_GAME_URL, new PostCreateGameRoute(AccountPlayerMap, accounts, difficulty), templateEngine);
 
   }
 

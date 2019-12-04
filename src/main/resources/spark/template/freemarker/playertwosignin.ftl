@@ -8,18 +8,28 @@
 <body>
   <div class="page">
   
-    <h1>Register With Us</h1>
+    <h1>Web Checkers</h1>
     
     <div class="navigation" align="center">
-      <a href="/">my home</a>
+      <a href="/">my home</a><a href="/choosegame" style="margin-left: 40px;">choose a game</a>
     </div>
-
-    <h3 align ="center">No account? Sign up</h3>
-    <div align="center">
-        <h4>${error}</h4>
+    <h2 align="center"><h2>${error}</h2>
+    <div class="body">
+    <table align="center" cellspacing="30">
+      <tr>
+        <td>
         <form method = "POST">
-        <h2 align="center">Register with us!</h2>
-          <table align="center">
+        <table align="left">
+            <tr><td>Username: <input name = "username"/></td></tr>
+            <tr><td>Password: <input name = "password" /></td></tr>
+          </table>
+          <button type="submit">Log In</button>
+        </form>
+        </td>
+        <td>
+        Register:
+        <form method = "POST">
+          <table align="right">
             <tr><td>First Name: <input name = "f_name"/></td></tr>
             <tr><td>Last Name: <input name = "l_name"/></td></tr>
             <tr><td>Username: <input name = "username"/></td></tr>
@@ -27,6 +37,9 @@
           </table>
           <button type = "submit">Register</button>
         </form>
+        </td>
+      </tr>
+    </table>
     </div>
   </div>
 </body>
