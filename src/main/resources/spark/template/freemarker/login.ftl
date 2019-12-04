@@ -22,7 +22,7 @@
           <br />
           Password:  <input name = "password" />
           <br />
-          <button type="submit">Log In</button>
+          <a href="/home"><button type="submit">Log In</button></a>
         </form>
     </div>
 </body>

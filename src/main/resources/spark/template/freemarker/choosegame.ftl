@@ -10,10 +10,10 @@
   
     <h1>Web Checkers</h1>
     
-    <div class="navigation">
-      <a href="/choosegame">my home</a>
+    <div class="navigation" align="center">
+      <a href="/choosegame">my home</a><a href="/choosegame" style="margin-left: 40px;">choose a game</a>
     </div>
-    
+    <h2>${error}</h2>
     <div class="body">
       <h2>Welcome ${username}!</h2>
       <p>What would you like to do?</p>

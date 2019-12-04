@@ -18,10 +18,13 @@ public class GetHomeRoute implements TemplateViewRoute {
   
   private HashMap<Account, Player> AccountPlayerMap;
 
-  public GetHomeRoute(HashMap<Account, Player> AccountPlayerMap) {
+  private Account[] accounts;
+
+  public GetHomeRoute(HashMap<Account, Player> AccountPlayerMap, Account[] accounts) {
     System.out.println("GetHomeRoute is online.");
 
     this.AccountPlayerMap = AccountPlayerMap;
+    this.accounts = accounts;
   }
 
   @Override

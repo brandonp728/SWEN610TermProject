@@ -12,11 +12,6 @@ import spark.Request;
 import spark.Response;
 import spark.TemplateViewRoute;
 
-/**
- * The Web Controller for the Home page.
- *
- * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
- */
 public class GameController implements TemplateViewRoute {
   static final LocalDateTime startTime = LocalDateTime.now();
   @Override
