@@ -1,7 +1,13 @@
 package com.webcheckers.ui;
 
 import static spark.Spark.*;
+
+import java.util.HashMap;
+
 import spark.TemplateEngine;
+import com.webcheckers.model.*;
+
+import org.eclipse.jetty.security.HashLoginService;
 
 
 /**
@@ -48,6 +54,8 @@ public class WebServer {
   public static final String LOGIN_URL = "/login";
 
   public static final String REGISTER_URL = "/register";
+
+  public static final String CHOOSE_GAME_URL = "/choosegame";
 
   //
   // Attributes
@@ -120,6 +128,10 @@ public class WebServer {
     //// Create separate Route classes to handle each route; this keeps your
     //// code clean; using small classes.
 
+    //Create the Player and Acccount HashMap to store the user information
+    HashMap<Account, Player> AccountPlayerMap = new HashMap<Account, Player>();
+
+
     /////////////////////////////////////////////////
     ////                                         ////
     ////              GET METHODS                ////
@@ -127,11 +139,13 @@ public class WebServer {
     ////                                         ////
     /////////////////////////////////////////////////
     // Shows the Checkers game Home page.
-    get(HOME_URL, new GetHomeRoute(), templateEngine);
+    get(HOME_URL, new GetHomeRoute(AccountPlayerMap), templateEngine);
 
     get(LOGIN_URL, new GetLoginRoute(), templateEngine);
 
     get(REGISTER_URL, new GetRegisterRoute(), templateEngine);
+
+    get(CHOOSE_GAME_URL, new GetChooseGameRoute(AccountPlayerMap), templateEngine);
 
     get("/Pieces", new GamePieceController(), templateEngine);
 
@@ -142,9 +156,9 @@ public class WebServer {
     ////                                         ////
     ////                                         ////
     /////////////////////////////////////////////////
-    post(LOGIN_URL, new PostLoginRoute(), templateEngine);
+    post(LOGIN_URL, new PostLoginRoute(AccountPlayerMap), templateEngine);
 
-    post(REGISTER_URL, new PostRegisterRoute(), templateEngine);
+    post(REGISTER_URL, new PostRegisterRoute(AccountPlayerMap), templateEngine);
 
   }
 

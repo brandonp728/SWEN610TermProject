@@ -22,6 +22,7 @@ public class GetRegisterRoute implements TemplateViewRoute {
   public ModelAndView handle(Request request, Response response) {
     Map<String, Object> vm = new HashMap<>();
     vm.put("title", "Register!");
+    vm.put("error", "");
     return new ModelAndView(vm , "register.ftl");
   }
 
