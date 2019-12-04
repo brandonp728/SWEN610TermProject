@@ -16,7 +16,7 @@
     </div>
     <h2 align="center">${error}</h2>
     <div class="body">
-    <#if !twoplayer>
+    <#if !twoplayer && !oneplayer>
       <h2>Set your rules</h2>
       <form method="POST">
         Number of Players:
@@ -39,6 +39,9 @@
       </#if>
       <#if twoplayer>
         <h3><a href="/playertwosignin">Sign in!</a></h3>
+      </#if>
+      <#if oneplayer>
+          <h3><a href="/playgame">Lets Play!</a></h3>
       </#if>
     </div>
   </div>

@@ -2,15 +2,38 @@ package com.webcheckers.model;
 
 public class Tile {
     String color;
+    GamePiece piece;
 
-    /**
-     * Checks to see if there is a GamePiece on the Tile
-     * and who it belongs to.
-     *
-     * @return String p1, p2, false
-     */
-    public String hasGamePiece(){
+    public Tile() {
+        color = new String();
+        piece = null;
+    }
 
-        return "false";
+    public Tile(String color, GamePiece piece) {
+        this.color = color;
+        this.piece = piece;
+    }
+
+    public GamePiece getPiece() {
+        return piece;
+    }
+
+    public String getColor() {
+        return color;
+    }    
+
+    public Boolean hasGamePiece(){
+        Boolean hasPiece = (piece==null);
+        return hasPiece;
+    }
+
+    public void setPiece(GamePiece piece) {
+        this.piece = piece;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }
+
+    
